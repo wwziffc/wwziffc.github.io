@@ -180,7 +180,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-03-28 22:46:18 / 修改时间：23:30:37" itemprop="dateCreated datePublished" datetime="2023-03-28T22:46:18+08:00">2023-03-28</time>
+              <time title="创建时间：2023-03-28 22:46:18 / 修改时间：23:34:40" itemprop="dateCreated datePublished" datetime="2023-03-28T22:46:18+08:00">2023-03-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,18 +223,6 @@
       
           <h1 id="错误提示-Uncaught-TypeError-Cannot-read-properties-of-null-reading’classList’"><a href="#错误提示-Uncaught-TypeError-Cannot-read-properties-of-null-reading’classList’" class="headerlink" title="错误提示 Uncaught TypeError:Cannot read properties of null (reading’classList’)"></a>错误提示 Uncaught TypeError:Cannot read properties of null (reading’classList’)</h1><p>错误提示：</p>
 <p><img src="/../images/Snipaste_2023-03-28_18-49-27.png"></p>
-<p>我的代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">as</span> = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.tab-nav a&#x27;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">as</span>.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">as</span>[i].<span class="title function_">addEventListener</span>(<span class="string">&#x27;mouseenter&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.tab-nav .active&#x27;</span>).<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&#x27;active&#x27;</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>问题出在：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.tab-nav .active&#x27;</span>).<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&#x27;active&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>根据Chat-GPT的回答：</p>
-<blockquote>
-<p>这部分代码有一个错误，即在鼠标进入链接时，虽然选中了当前处于 active 状态的链接，但没有给新的链接设置 active 状态。<br>报错 “Uncaught TypeError: Cannot read properties of null (reading ‘classList’)” 表示代码试图读取一个 null 或 undefined<br>变量的属性，具体来说，在这个错误中，代码试图读取一个 DOM 元素（通过类名或 ID）的 classList 属性，但是没有找到该元素。</p>
-<p>在这个特定的代码中，document.querySelector(‘.tab-nav .active’) 返回了 null，因为此时没有匹配到具有 active 类名的元素，而 null 是没有 classList<br>属性的，所以代码就会抛出上述错误。</p>
-<p>在给链接添加鼠标经过事件的代码中，我们需要操作一个当前处于 active 状态的链接，如果没有找到匹配的元素，就会出现以上的错误。因此，我们需&gt;要确保在操作 DOM 元素之前，它已经被正确地创建并添加到了文档树中。</p>
-</blockquote>
-<p>修改方式：只需在出错代码后加一句，如下：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/03/28/%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA-Uncaught-TypeError-Cannot-read-properties-of-null-reading-classList/#more" rel="contents">
